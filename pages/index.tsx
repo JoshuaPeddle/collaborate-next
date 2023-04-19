@@ -4,6 +4,7 @@ const inter = Inter({ subsets: [ 'latin' ] });
 import RepoList from '@/components/repolist';
 import { GetServerSideProps } from 'next';
 import {getRepoData} from '@/lib/repos';
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const repos = await getRepoData();
@@ -23,8 +24,17 @@ export default function Home({repos}:{repos:any}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='w-screen h-screen'>
-        <section className='w-screen h-96'>
+      <main className='w-screen h-[100svh] flex flex-col'>
+        <header className='w-screen h-12 flex items-center justify-between '>
+          <h1 className='text-4xl text-left p-1 pl-2'> Collaborate </h1>
+          <section className='flex flex-row'>
+            <p  className='hidden md:block text-2xl text-right p-1 pr-2'> _dark_mode_toggle_ </p> 
+            <Link href='/about' className='hidden md:block text-2xl text-right p-1 pr-2'> Github </Link>
+            <Link href='/about' className='hidden md:block text-2xl text-right p-1 pr-2'> About </Link>
+          </section>
+          <p className='md:hidden text-2xl text-right p-1 pr-2'> _menu_ </p>
+        </header>
+        <section className='w-screen h-full'>
           {repos &&<RepoList repos={repos} />}
         </section>
       </main>

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base{
+    body {
+        @apply dark:bg-slate-800 bg-white dark:text-slate-50
+    }
+    .MuiDataGrid-footerContainer {
+        @apply dark:bg-slate-800 dark:text-slate-50
+    }
+    .MuiToolbar-root{
+        @apply dark:bg-slate-800 dark:text-slate-50
+    }
+}
