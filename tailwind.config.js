@@ -11,5 +11,7 @@ module.exports = {
   theme: {
     extend: {},
   },
+  important: '#__next',
+
   plugins: [],
 };
