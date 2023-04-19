@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import Image from 'next/image';
 
 const columns = [
   {
@@ -9,7 +10,7 @@ const columns = [
     minWidth: 80,
     renderCell: (params:any) => {
       return (
-        <img className='w-10' src={params.value} />
+        <Image className='w-10' src={params.value} alt={''} />
       );
     },
     flex: 0
