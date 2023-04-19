@@ -1,12 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
-
+const inter = Inter({ subsets: [ 'latin' ] });
 import RepoList from '@/components/repolist';
 import { GetServerSideProps } from 'next';
-
 import {getRepoData} from '@/lib/repos';
-const inter = Inter({ subsets: [ 'latin' ] });
+
 export const getServerSideProps: GetServerSideProps = async () => {
   const repos = await getRepoData();
   return {
@@ -25,10 +23,10 @@ export default function Home({repos}:{repos:any}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=''>
-        <div className=''>
-          <RepoList repos={repos} />
-        </div>
+      <main className='w-screen h-screen'>
+        <section className='w-screen h-96'>
+          {repos &&<RepoList repos={repos} />}
+        </section>
       </main>
     </>
   );
