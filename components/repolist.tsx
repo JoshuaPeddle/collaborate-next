@@ -10,7 +10,7 @@ const columns = [
     minWidth: 80,
     renderCell: (params:any) => {
       return (
-        <Image className='w-10' src={params.value} alt={''} />
+        <Image className='w-10' width={40} height={40} src={params.value} alt={''} />
       );
     },
     flex: 0
@@ -80,7 +80,7 @@ const columns = [
     renderCell: (params:any) => {
       return (
         <>
-          <a className='repo_link' href={params.value}  > Link </a>
+          <a className='' href={params.value}  > Link </a>
         </>
       );
     }
@@ -88,12 +88,25 @@ const columns = [
 ];
 export default function RepoList ({ repos }:{repos:any}) {
   return (
-    <div className='w-screen h-screen'  >
+    <div className='w-screen h-full '  >
       <DataGrid
         density='standard'
         autoPageSize={true}
         rows={repos}
         columns={columns}
+        sx={{
+          borderRight:0,
+          borderLeft:0,
+          color: '',
+          '& .MuiDataGrid-cell:hover': {
+          },
+          '& .MuiToolbar-root': {
+          },
+          '& .MuiDataGrid-footerContainer': {
+         
+          },
+        }}
+        className='dark:text-slate-50 '
         disableRowSelectionOnClick
         initialState={{
           pagination: {
@@ -102,7 +115,7 @@ export default function RepoList ({ repos }:{repos:any}) {
             },
           },
         }}
-        pageSizeOptions={[ 10, 20, 50 ]}
+
       />
     </div>
   );
