@@ -4,12 +4,12 @@ import { DataGrid } from '@mui/x-data-grid';
 const columns = [
   {
     field: 'Repo_avatar',
-    headerName: '',
+    headerName: 'Logo',
     sortable: false,
     minWidth: 80,
     renderCell: (params:any) => {
       return (
-        <img className='repo_img' src={params.value} />
+        <img className='w-10' src={params.value} />
       );
     },
     flex: 0
@@ -79,7 +79,7 @@ const columns = [
     renderCell: (params:any) => {
       return (
         <>
-          <a className='repo_link' href={params.value}  >  </a>
+          <a className='repo_link' href={params.value}  > Link </a>
         </>
       );
     }
@@ -87,7 +87,7 @@ const columns = [
 ];
 export default function RepoList ({ repos }:{repos:any}) {
   return (
-    <div className='repo_list'  >
+    <div className='w-screen h-screen'  >
       <DataGrid
         density='standard'
         autoPageSize={true}
@@ -101,7 +101,7 @@ export default function RepoList ({ repos }:{repos:any}) {
             },
           },
         }}
-        pageSizeOptions={[ 10, 20, 50, 100 ]}
+        pageSizeOptions={[ 10, 20, 50 ]}
       />
     </div>
   );
