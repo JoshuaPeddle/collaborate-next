@@ -12,6 +12,6 @@ module.exports = {
     extend: {},
   },
   important: '#__next',
-
+  darkMode: 'class',
   plugins: [],
 };
