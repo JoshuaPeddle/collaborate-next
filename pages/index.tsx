@@ -4,7 +4,8 @@ const inter = Inter({ subsets: [ 'latin' ] });
 import RepoList from '@/components/repolist';
 import { GetServerSideProps } from 'next';
 import {getRepoData} from '@/lib/repos';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import ThemeToggle from '@/components/themeToggle';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const repos = await getRepoData();
@@ -16,6 +17,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default function Home({repos}:{repos:any}) {
+  const [ mounted, setMounted ] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return null;
+  }
   return (
     <>
       <Head>
@@ -28,11 +36,9 @@ export default function Home({repos}:{repos:any}) {
         <header className='w-screen h-12 flex items-center justify-between '>
           <h1 className='text-4xl text-left p-1 pl-2'> Collaborate </h1>
           <section className='flex flex-row'>
-            <p  className='hidden md:block text-2xl text-right p-1 pr-2'> _dark_mode_toggle_ </p> 
-            <Link href='/about' className='hidden md:block text-2xl text-right p-1 pr-2'> Github </Link>
-            <Link href='/about' className='hidden md:block text-2xl text-right p-1 pr-2'> About </Link>
+            <ThemeToggle/>
+            <p className='md:hidden text-2xl text-right p-1 pr-2'> _menu_ </p>
           </section>
-          <p className='md:hidden text-2xl text-right p-1 pr-2'> _menu_ </p>
         </header>
         <section className='w-screen h-full'>
           {repos &&<RepoList repos={repos} />}
